@@ -54,6 +54,7 @@ public:
 	void evaluateRules();
 	void createGraph();
 	void createNodes();
+	std::string sccToString(std::vector<std::set<int>>&);
 
 };
 

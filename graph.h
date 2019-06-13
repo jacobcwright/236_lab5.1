@@ -11,7 +11,7 @@
 class Graph : public std::map<int, Node*>{
 private:
 	std::stack<int> dfsReverseRecursive(Node* n, std::stack<int>&);
-	std::vector<std::set<int>> dfsRecursive(std::stack<int>);
+	void dfsRecursive(Node* n, std::set<int>&);
 public:
     Graph() : map<int, Node*>(){}
     ~Graph(){
@@ -22,7 +22,7 @@ public:
     std::string toString()const;
 	std::string toStringReverse()const;
 	std::string topToString(std::stack<int>);
-	std::vector<std::set<int>> dfs(std::stack<int>);
+	std::vector<std::set<int>> dfs(std::stack<int>&);
 	std::stack<int> dfsReverse();
 
 

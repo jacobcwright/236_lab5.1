@@ -6,6 +6,26 @@ std::string Interpreter::toString() {
 	return "";
 }
 
+std::string Interpreter::sccToString(std::vector<std::set<int>>& scc) {
+	std::stringstream ss;
+	ss << "Strongly Connected Components:" << std::endl;
+	for (size_t i = 0; i < scc.size(); i++) {
+		ss << "{";
+		std::set<int>::iterator last = --(scc.at(i).end());
+		for (std::set<int>::iterator it = scc.at(i).begin(); it != scc.at(i).end(); it++) {
+			if (it == last) {
+				ss << "R" << *it;
+				break;
+			}
+			ss << "R" << *it << ", ";
+		}
+		ss << "}" << std::endl;
+	}
+
+	return ss.str();
+}
+
+
 void Interpreter::makeTuples() {
 	for (auto r : dlp.myFacts) {
 		Tuple temp(r);
@@ -37,14 +57,14 @@ bool Interpreter::doEpicStuff() {
 	std::stack<int> post = myGraph.dfsReverse();
 
 	//output topological ordering
-	std::cout << std::endl << myGraph.topToString(post);
+	std::cout << std::endl << myGraph.topToString(post) << std::endl;
 
 	//get SCC
 	std::vector<std::set<int>> scc;
-	//scc = myGraph.dfs(post);
+	scc = myGraph.dfs(post);
 
 	//output SCC
-
+	std::cout << sccToString(scc);
 
 	//evaluateRules();
 	//evaluate();
@@ -228,12 +248,10 @@ void Interpreter::createGraph(){
 	std::vector<Rules>& rules = dlp.myRules;
 	createNodes();	
 
-	//int currentRule = -1;
 	for(auto& r : rules){
-		//currentRule = r.graphID;
 		for(auto& p : r.predicateList){
 			for(auto& r2 : rules){
-				if(p.getID() == r2.getHead().getID()){
+				if(p.getID() == r2.getHead().getID() /*&& (p.toString() == r2.getHead().toString())*/){
 					Node* temp = myGraph[r.graphID];
 					Node* temp2 = myGraph[(r2.graphID)];
 					temp->edges.push_back(temp2);

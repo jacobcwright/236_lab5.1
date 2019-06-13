@@ -9,15 +9,18 @@ public:
     std::vector<Node*> edges;
 	std::vector<Node*> reverseEdges;
     Rules rule;
-    bool visited;
+    bool reverseVisited;
+	bool forwardVisited;
     Node(int givenID, Rules& givenRule){
         ID = givenID;
         rule = givenRule;
-        visited = false;
+        reverseVisited = false;
+		forwardVisited = false;
     }
     Node(){
         ID = INT8_MIN;
-        visited = false;
+        reverseVisited = false;
+		forwardVisited = false;
     }
 	//Node() {}
     ~Node(){
