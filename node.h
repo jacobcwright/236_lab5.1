@@ -6,8 +6,8 @@
 class Node {
 public:
     int ID;
-    std::vector<Node> edges;
-	std::vector<Node> reverseEdges;
+    std::vector<Node*> edges;
+	std::vector<Node*> reverseEdges;
     Rules rule;
     bool visited;
     Node(int givenID, Rules& givenRule){
@@ -21,7 +21,18 @@ public:
     }
 	//Node() {}
     ~Node(){
+		/*for (size_t i = 0; i < edges.size(); i++) {
+			if (edges.at(i) != nullptr) {
+				delete edges.at(i);
+			}
+		}
+		for (size_t i = 0; i < reverseEdges.size(); i++) {
+			if (reverseEdges.at(i) != nullptr) {
+				delete reverseEdges.at(i);
+			}
+		}*/
         edges.clear();
+		reverseEdges.clear();
     }
 };
 

@@ -234,10 +234,10 @@ void Interpreter::createGraph(){
 		for(auto& p : r.predicateList){
 			for(auto& r2 : rules){
 				if(p.getID() == r2.getHead().getID()){
-					Node &temp = myGraph[r.graphID];
-					Node &temp2 = myGraph[(r2.graphID)];
-					temp.edges.push_back(temp2);
-					temp2.reverseEdges.push_back(temp);
+					Node* temp = myGraph[r.graphID];
+					Node* temp2 = myGraph[(r2.graphID)];
+					temp->edges.push_back(temp2);
+					temp2->reverseEdges.push_back(temp);
 					/*myGraph[r.graphID].edges.push_back(myGraph[r2.graphID]);
 					myGraph[r2.graphID].reverseEdges.push_back(myGraph[r.graphID]);*/
 				}
@@ -261,11 +261,11 @@ void Interpreter::createNodes(){
 	int counter = 0; 
 	for(auto& r : rules){
 		//set ID, and give pointer to rule
-		Node temp(counter, r);
+		Node* temp = new Node(counter, r);
 		r.graphID = counter;
 
 		//add Node to graph
-		myGraph.insert(std::pair<int, Node>(counter, temp));
+		myGraph.insert(std::pair<int, Node*>(counter, temp));
 		counter++;
 	}
 }
