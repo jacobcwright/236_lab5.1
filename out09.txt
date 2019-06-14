@@ -1,0 +1,10 @@
+Dependency Graph
+R0:
+
+Reverse Dependency Graph
+R0:
+
+POTN(R0) = 0
+
+Strongly Connected Components:
+{R0}

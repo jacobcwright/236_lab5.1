@@ -254,8 +254,8 @@ void Interpreter::createGraph(){
 				if(p.getID() == r2.getHead().getID() /*&& (p.toString() == r2.getHead().toString())*/){
 					Node* temp = myGraph[r.graphID];
 					Node* temp2 = myGraph[(r2.graphID)];
-					temp->edges.push_back(temp2);
-					temp2->reverseEdges.push_back(temp);
+					temp->edges.insert(temp2);
+					temp2->reverseEdges.insert(temp);
 					/*myGraph[r.graphID].edges.push_back(myGraph[r2.graphID]);
 					myGraph[r2.graphID].reverseEdges.push_back(myGraph[r.graphID]);*/
 				}

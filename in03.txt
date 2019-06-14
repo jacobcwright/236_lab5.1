@@ -1,0 +1,17 @@
+# No rules - no graphs, only headers
+
+Schemes:
+bob(x)
+jim(x)
+joe(x)
+
+Facts:
+joe('4').
+jim('2').
+bob('1').
+
+Rules:
+
+Queries:
+bob(x)?
+

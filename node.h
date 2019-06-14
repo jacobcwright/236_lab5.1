@@ -2,12 +2,13 @@
 #define NODE_H
 #include "rules.h"
 #include <vector>
+#include <set>
 
 class Node {
 public:
     int ID;
-    std::vector<Node*> edges;
-	std::vector<Node*> reverseEdges;
+    std::set<Node*> edges;
+	std::set<Node*> reverseEdges;
     Rules rule;
     bool reverseVisited;
 	bool forwardVisited;

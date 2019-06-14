@@ -10,12 +10,13 @@ std::string Graph::toString()const{
             ss << std::endl;
 			continue;
         }
-        for(size_t j = 0; j < this->at(i)->edges.size(); j++){
-            if(j == this->at(i)->edges.size() - 1){
-                ss << "R" << this->at(i)->edges.at(j)->ID << std::endl;
+		std::set<Node*>::iterator last = --(this->at(i)->edges.end());
+		for (std::set<Node*>::iterator j = this->at(i)->edges.begin(); j != this->at(i)->edges.end(); j++) {
+            if(j == last){
+                ss << "R" << (*j)->ID << std::endl;
                 break;
             }
-            ss << "R" << this->at(i)->edges.at(j)->ID << ",";
+            ss << "R" << (*j)->ID << ",";
         }
     }
     return ss.str();
@@ -31,12 +32,13 @@ std::string Graph::toStringReverse() const {
 			ss << std::endl;
 			continue;
 		}
-		for (size_t j = 0; j < this->at(i)->reverseEdges.size(); j++) {
-			if (j == this->at(i)->reverseEdges.size() - 1) {
-				ss << "R" << this->at(i)->reverseEdges.at(j)->ID << std::endl;
+		std::set<Node*>::iterator last = --(this->at(i)->reverseEdges.end());
+		for (std::set<Node*>::iterator j = this->at(i)->reverseEdges.begin(); j != this->at(i)->reverseEdges.end(); j++) {
+			if (j == last) {
+				ss << "R" << (*j)->ID << std::endl;
 				break;
 			}
-			ss << "R" << this->at(i)->reverseEdges.at(j)->ID << ",";
+			ss << "R" << (*j)->ID << ",";
 		}
 	}
 	return ss.str();

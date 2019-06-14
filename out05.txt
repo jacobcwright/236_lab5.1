@@ -1,0 +1,41 @@
+Dependency Graph
+R0:
+R1:R0,R1
+R2:
+R3:R2
+R4:
+R5:R4,R5
+R6:R6,R7,R8
+R7:R6,R7,R8
+R8:
+
+Reverse Dependency Graph
+R0:R1
+R1:R1
+R2:R3
+R3:
+R4:R5
+R5:R5
+R6:R6,R7
+R7:R6,R7
+R8:R6,R7
+
+POTN(R8) = 8
+POTN(R6) = 7
+POTN(R7) = 6
+POTN(R4) = 5
+POTN(R5) = 4
+POTN(R2) = 3
+POTN(R3) = 2
+POTN(R0) = 1
+POTN(R1) = 0
+
+Strongly Connected Components:
+{R8}
+{R6, R7}
+{R4}
+{R5}
+{R2}
+{R3}
+{R0}
+{R1}

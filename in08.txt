@@ -1,0 +1,38 @@
+# All rules dependent on each other - lots of rules - checking for 1 SCC
+
+# standard test for dependency graph, reverse graph, topological ordering and SCC
+Schemes:
+   A(a)
+   B(b)
+   C(c)
+   D(d)
+
+Facts:
+   A('a').
+   B('b').
+   C('c').
+   D('d').
+
+Rules: 
+   A(a):-A(a).
+   A(a):-B(b).
+   A(a):-C(c).
+   A(a):-D(d).
+   B(a):-A(a).
+   B(a):-B(b).
+   B(a):-C(c).
+   B(a):-D(d).
+   C(a):-A(a).
+   C(a):-B(b).
+   C(a):-C(c).
+   C(a):-D(d).
+   D(a):-A(a).
+   D(a):-B(b).
+   D(a):-C(c).
+   D(a):-D(d).
+   
+
+Queries:
+    A('a')?
+    A('b')?
+  
