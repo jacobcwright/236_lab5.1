@@ -2,26 +2,41 @@
 #define NODE_H
 #include "rules.h"
 #include <vector>
+#include <set>
 
 class Node {
 public:
     int ID;
-    std::vector<Node> edges;
-	std::vector<Node> reverseEdges;
+    std::set<Node*> edges;
+	std::set<Node*> reverseEdges;
     Rules rule;
-    bool visited;
+    bool reverseVisited;
+	bool forwardVisited;
     Node(int givenID, Rules& givenRule){
         ID = givenID;
         rule = givenRule;
-        visited = false;
+        reverseVisited = false;
+		forwardVisited = false;
     }
     Node(){
         ID = INT8_MIN;
-        visited = false;
+        reverseVisited = false;
+		forwardVisited = false;
     }
 	//Node() {}
     ~Node(){
+		/*for (size_t i = 0; i < edges.size(); i++) {
+			if (edges.at(i) != nullptr) {
+				delete edges.at(i);
+			}
+		}
+		for (size_t i = 0; i < reverseEdges.size(); i++) {
+			if (reverseEdges.at(i) != nullptr) {
+				delete reverseEdges.at(i);
+			}
+		}*/
         edges.clear();
+		reverseEdges.clear();
     }
 };
 

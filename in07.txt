@@ -1,0 +1,20 @@
+# SCC has 3 elements - mainly checking dependency graph and SCC
+
+Schemes:
+bob(x)
+jim(x)
+joe(x)
+
+Facts:
+joe('4').
+jim('2').
+bob('1').
+
+Rules:
+bob(x) :- bob(x).
+bob(x) :- jim(x).
+jim(x) :- bob(x).
+
+Queries:
+bob(x)?
+

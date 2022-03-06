@@ -1,0 +1,26 @@
+Dependency Graph
+R0:
+R1:
+R2:
+R3:R0,R1,R2
+R4:R3
+
+Reverse Dependency Graph
+R0:R3
+R1:R3
+R2:R3
+R3:R4
+R4:
+
+POTN(R2) = 4
+POTN(R1) = 3
+POTN(R0) = 2
+POTN(R3) = 1
+POTN(R4) = 0
+
+Strongly Connected Components:
+{R2}
+{R1}
+{R0}
+{R3}
+{R4}
